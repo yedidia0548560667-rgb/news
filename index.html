@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פורטל bבוגרי אויצר</title>
+    <title>משדר מיוחד - בוגרי אויצר</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #0f172a; /* כחול כהה מקצועי */
-            --accent-color: #0284c7;  /* כחול בהיר דומיננטי */
-            --text-color: #334155;
-            --card-bg: rgba(255, 255, 255, 0.95); /* לבן מעט שקוף כדי שהרקע ישתלב יפה */
-            --border-color: #e2e8f0;
+            --studio-blue: #06163a; /* כחול אולפן עמוק */
+            --news-red: #df1b24;    /* אדום מבזק דרמטי */
+            --neon-blue: #00f0ff;    /* כחול זוהר טלוויזיוני */
+            --text-light: #ffffff;
+            --panel-bg: rgba(11, 27, 68, 0.85); /* רקע חלונות שקוף למחצה */
         }
 
         * {
@@ -25,312 +25,306 @@
         }
 
         body {
-            /* תמונת רקע כללית לכל האתר - קיר לבנים בהיר ונקי */
-            background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1200');
-            background-size: cover;
-            background-position: center;
+            background-color: var(--studio-blue);
+            color: var(--text-light);
+            background-image: radial-gradient(circle at center, #0f2b6e 0%, #06163a 100%);
             background-attachment: fixed;
-            color: var(--text-color);
-            line-height: 1.5;
+            padding-bottom: 60px;
         }
 
-        /* כותרת עליונה גדולה */
+        /* כותרת ענקית של ערוץ טלוויזיה */
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 40px 20px;
+            background: linear-gradient(180deg, #091f52 0%, #040f28 100%);
+            border-bottom: 3px solid var(--news-red);
+            padding: 25px 20px;
             text-align: center;
-            border-bottom: 4px solid var(--accent-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            position: relative;
         }
 
         header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 3.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
             letter-spacing: -1px;
-            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
         }
 
-        header p {
-            font-size: 1.2rem;
-            color: #94a3b8;
+        header .live-badge {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background-color: var(--news-red);
+            color: white;
+            padding: 4px 12px;
+            font-weight: 700;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            animation: blink 1.5s infinite;
         }
 
-        /* בר ניווט ולוגו */
-        .nav-bar {
-            background-color: #ffffff;
-            padding: 10px 20px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        /* פריסת החלונות (הגריד המרכזי) */
-        .portal-container {
-            max-width: 1300px;
+        /* פריסת מסך האולפן */
+        .studio-container {
+            max-width: 1400px;
             margin: 30px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 20px;
+            grid-template-columns: 2.5fr 1.2fr;
+            gap: 25px;
         }
 
-        @media (max-width: 900px) {
-            .portal-container {
+        @media (max-width: 1000px) {
+            .studio-container {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* סגנון כללי לחלון (קופסה) */
-        .window-box {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+        /* עיצוב החלונות באולפן */
+        .studio-window {
+            background: var(--panel-bg);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px); /* אפקט טשטוש עדין לרקע */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .window-title {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+        .studio-window::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--news-red), var(--neon-blue));
+        }
+
+        .window-label {
+            font-size: 1.1rem;
             font-weight: 700;
-            border-right: 4px solid var(--accent-color);
-            padding-right: 10px;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            text-transform: uppercase;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 8px;
         }
 
-        /* חלון כותרות ראשיות */
-        .main-news-grid {
+        /* כתבה ראשית דרמטית */
+        .main-story {
+            background: linear-gradient(135deg, rgba(15, 43, 110, 0.9) 0%, rgba(6, 22, 58, 0.9) 100%);
+        }
+
+        .story-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #ffffff;
+            border-right: 5px solid var(--news-red);
+            padding-right: 15px;
+        }
+
+        .story-content {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* חלון המדיה - וידאו ותמונות */
+        .media-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 15px;
+            margin-top: 20px;
         }
 
-        @media (max-width: 768px) {
-            .main-news-grid {
+        @media (max-width: 600px) {
+            .media-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .news-item {
-            background-color: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 15px;
-            transition: transform 0.2s;
-        }
-
-        .news-item:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
-        }
-
-        .news-item.featured {
-            background-color: #f0fdf4;
-            border-right: 3px solid #16a34a;
-        }
-
-        .item-date {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin-bottom: 5px;
-        }
-
-        .item-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-
-        /* תמונה בתוך כתבה */
-        .article-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 12px;
-        }
-
-        /* חלון מבזקים רצים */
-        .ticker-list {
-            list-style: none;
-        }
-
-        .ticker-item {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            gap: 10px;
-            font-size: 0.95rem;
-        }
-
-        .ticker-time {
-            color: var(--accent-color);
-            font-weight: 600;
-            min-width: 50px;
-        }
-
-        /* חלון וידאו ומולטימדיה */
-        .video-placeholder {
-            background-color: #000;
-            width: 100%;
-            aspect-ratio: 16 / 9;
+        .video-box {
+            background: #000000;
+            aspect-ratio: 16/9;
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 2px solid #1e293b;
             color: #64748b;
-            margin-bottom: 10px;
         }
 
-        /* טופס יצירת קשר משולב */
-        .form-input {
+        .image-box {
+            background: #1e293b;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid #334155;
+        }
+
+        .image-box img {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* חלון מבזקים קופצים */
+        .ticker-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ticker-card {
+            background: rgba(4, 15, 40, 0.6);
+            border-right: 4px solid var(--news-red);
+            padding: 12px 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .ticker-time {
+            font-size: 0.85rem;
+            color: var(--neon-blue);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .ticker-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        /* פנל שליחת עדכונים מובנה */
+        .input-bar {
+            background: #091f52;
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 6px;
+            color: white;
+            width: 100%;
+            margin-bottom: 10px;
             outline: none;
         }
 
-        .form-input:focus {
-            border-color: var(--accent-color);
-        }
-
-        .submit-btn {
-            background-color: var(--accent-color);
+        .action-btn {
+            background: var(--news-red);
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
+            padding: 12px;
+            font-weight: 700;
             width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        .submit-btn:hover {
-            background-color: #026ca2;
+        .action-btn:hover {
+            background: #b91c1c;
         }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: var(--primary-color);
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-top: 40px;
+        /* פלאש מבזק רץ בתחתית כמו בטלוויזיה */
+        .bottom-ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--news-red);
+            color: white;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        .ticker-move {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="live-badge">שידור חי</div>
         <h1>בוגרי אויצר</h1>
-        <p>מרכז העדכונים, החדשות והאירועים הרשמי</p>
     </header>
 
-    <div class="nav-bar">
-        <div class="logo-container">
-            <img src="https://github.com/yedidia0548560667-rgb.png" alt="לוגו" class="logo-img">
-            <span style="font-weight: 600;">מערכת הפורטל</span>
-        </div>
-        <div style="font-size: 0.9rem; color: #64748b;">עודכן לאחרונה בזמן אמת</div>
-    </div>
-
-    <div class="portal-container">
+    <div class="studio-container">
         
-        <div class="main-column">
+        <div class="main-content-flow">
             
-            <div class="window-box">
-                <div class="window-title">חלון כותרות וחדשות</div>
-                <div class="main-news-grid">
-                    
-                    <!-- הכתבה הראשית עם תמונה מוטמעת -->
-                    <div class="news-item featured">
-                        <!-- כאן יש קישור זמני לתמונת בניינים, אפשר להחליף לשם של קובץ שהעלית -->
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600" alt="תמונת כתבה" class="article-img">
-                        <div class="item-date">לפני שעה</div>
-                        <h4 class="item-title" style="font-size: 1.3rem;">השדרוג הגדול של אתר הבוגרים יצא לדרך</h4>
-                        <p>הפלטפורמה החדשה הושקה בעיצוב מתקדם הכולל חלונות מידע, עדכוני תמונות רקע ומערכת פניות משודרגת.</p>
-                    </div>
-
-                    <div class="news-item">
-                        <div class="item-date">הבוקר</div>
-                        <h4 class="item-title">חדשות הקהילה</h4>
-                        <p>הרשמה מוקדמת נפתחה לקראת סדרת המפגשים הקרובה. מספר המקומות מוגבל.</p>
-                    </div>
-
-                    <div class="news-item">
-                        <div class="item-date">אתמול</div>
-                        <h4 class="item-title">פיתוחים ועדכונים</h4>
-                        <p>צוות האתר פועל להוספת תכונות נוספות לרווחת הבוגרים בשבועות הקרובים.</p>
-                    </div>
-
-                </div>
+            <div class="studio-window main-story">
+                <div class="window-label">✦ כותרת ראשית // מבזק מיוחד</div>
+                <h2 class="story-title">דרמה בליל שישי: אירוע ענק לרגל חזרתו של הבחור יחיאל פוקס מאמריקה</h2>
+                <p class="story-content">
+                    התרגשות עצומה בקרב קהילת הבוגרים לקראת אירוע "ליל שישי" חגיגי ומיוחד שייערך השבוע. האירוע מופק ברמה הגבוהה ביותר לרגל חזרתו המיוחלת של חברנו הבחור החשוב יחיאל פוקס ממסעו הממושך בארצות הברית. כלל הבוגרים צפויים להתכנס יחד לחגיגה של מוזיקה, כיבוד עשיר ושיח חברים.
+                </p>
             </div>
 
-            <div class="window-box">
-                <div class="window-title">חלון וידאו ומולטימדיה</div>
-                <div class="video-placeholder">
-                    <span>[חלון ייעודי להצגת וידאו / שידורים]</span>
+            <div class="studio-window" style="margin-top: 25px;">
+                <div class="window-label">🎥 מולטימדיה // חלון שידור ותיעוד</div>
+                <div class="media-grid">
+                    
+                    <div class="video-box">
+                        <span>[ נגן וידאו - שידור מהאולפן ]</span>
+                    </div>
+                    
+                    <div class="image-box">
+                        <img src="pic.jpg" alt="גלריית תמונות" onerror="this.src='https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400'">
+                    </div>
+
                 </div>
-                <p style="font-size: 0.95rem;">צפו בתיעוד מתוך המפגשים האחרונים וסיכומי הפעילות של בוגרי אויצר.</p>
             </div>
 
         </div>
 
-        <div class="side-column">
+        <div class="side-content-flow">
             
-            <div class="window-box">
-                <div class="window-title">חלון מבזקים</div>
-                <ul class="ticker-list">
-                    <li class="ticker-item">
-                        <span class="ticker-time">14:32</span>
-                        <span class="ticker-text">הסתיימה פגישת הערכות לקראת האירוע הבא.</span>
-                    </li>
-                    <li class="ticker-item">
-                        <span class="ticker-time">11:15</span>
-                        <span class="ticker-text">הוספנו תמונת רקע חדשה ומעוצבת לאתר!</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="window-box">
-                <div class="window-title">חלון אירועים</div>
-                <div style="margin-bottom: 10px; padding: 8px; background: #f8fafc; border-radius: 4px;">
-                    <strong style="color: var(--accent-color); display: block; font-size: 0.9rem;">אירוע קרוב:</strong>
-                    <span style="font-weight: 600;">מפגש חברים מרכזי</span>
-                    <div style="font-size: 0.85rem; color: #64748b;">תאריך ומיקום מדויקים יפורסמו בהמשך.</div>
+            <div class="studio-window">
+                <div class="window-label">⚡ מבזקי חדשות בזמן אמת</div>
+                <div class="ticker-container">
+                    <div class="ticker-card">
+                        <span class="ticker-time">16:55</span>
+                        <p class="ticker-text">ההכנות לאירוע חזרתו של יחיאל פוקס נכנסו לישות הישורת האחרונה.</p>
+                    </div>
+                    <div class="ticker-card">
+                        <span class="ticker-time">14:20</span>
+                        <p class="ticker-text">חברי קבוצת ההפקה מבטיחים הפתעות חסרות תקדים בליל שישי הקרוב.</p>
+                    </div>
+                    <div class="ticker-card">
+                        <span class="ticker-time">10:05</span>
+                        <p class="ticker-text">ברוכים הבאים לפורטל החדשות המעודכן של בוגרי אויצר במתכונת אולפן.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="window-box">
-                <div class="window-title">חלון הודעות ומיילים</div>
+            <div class="studio-window" style="margin-top: 25px;">
+                <div class="window-label">✉ שליחת מבזק או הודעה למערכת</div>
                 <form action="https://api.web3forms.com/submit" method="POST">
                     <input type="hidden" name="access_key" value="כאן שמים את מפתח ה-API">
-                    <input type="text" name="name" class="form-input" placeholder="שם מלא" required>
-                    <input type="email" name="email" class="form-input" placeholder="כתובת מייל לחזרה" required>
-                    <textarea name="message" class="form-input" rows="3" placeholder="כתבו כאן את ההודעה או המבזק שלכם..." required></textarea>
-                    <button type="submit" class="submit-btn">שליחת הודעה</button>
+                    <input type="text" name="name" class="input-bar" placeholder="שם מלא" required>
+                    <input type="email" name="email" class="input-bar" placeholder="אימייל לחזרה" required>
+                    <textarea name="message" class="input-bar" rows="3" placeholder="כתבו כאן מבזק חדש..." required></textarea>
+                    <button type="submit" class="action-btn">שדר למערכת</button>
                 </form>
             </div>
 
@@ -338,9 +332,11 @@
 
     </div>
 
-    <footer>
-        <p>© כל הזכויות שמורות - פורטל בוגרי אויצר</p>
-    </footer>
+    <div class="bottom-ticker">
+        <div class="ticker-move">
+            +++ משדר מיוחד: בוגרי אויצר מתכוננים לאירוע חזרתו של יחיאל פוקס מאמריקה בליל שישי הקרוב +++ עדכונים שוטפים מהשטח כל הזמן +++ 
+        </div>
+    </div>
 
 </body>
 </html>
